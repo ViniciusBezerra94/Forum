@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Forum </title>
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />  
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/jquery-ui.css"/>  
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/theme.css"/>  
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/logo.ico"/> 
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery-ui.js"></script> 
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>      
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.zoom.min.js"></script>   
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/bootbox.min.js"></script>
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.funcao.js"></script> 
+
+    </h:head>
+
+
+    <h:body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Forum</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>Cadastre</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </h:body>
+    
+    <ui:insert></ui:insert>
+
+</html>
+
