@@ -6,24 +6,55 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              template="template.xhtml"> 
-    <h:body>
-        <h:dataTable class="table table-striped" var="poste" value="#{mensageriaMB.postagens}">
-            <h:column>
-                <h:outputText value="#{poste.nome}" />
-            </h:column>
 
-            <h:column>
-                <h:outputText value="#{poste.mensagem}" />
-            </h:column>
-        </h:dataTable>
-        
-        
-        
-        <h:form>
-            <h:inputTextarea class="form-control" value="#{mensageriaMB.mensagem}"/>
-            <h:commandButton class="btn btn-primary" value="Enviar" action="#{mensageriaMB.mostrarMensagem()}"/>         
-        </h:form>
+
+    <h:body>
+
+        <div class="container">
+            <h2>Forum</h2>
+            <p></p>
+
+            <div class="">
+                <div id="listaTopicos" class="row">
+                    <div  class="table-responsive col-md-12">
+                        <h:dataTable styleClass="table table-striped" value="#{carrinhoDeComprasBean.itens}" var="topicos" >
+       
+                            <h:column>
+                                <f:facet name="header" >Título</f:facet>
+                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                            </h:column>
+                            
+                            
+                            <h:column>
+                                <f:facet name="header" >Descrição</f:facet>
+                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header" >Autor</f:facet>
+                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header" >Data </f:facet>
+                                <h:outputText  value="#{carrinho.produto.valorUni}"/>
+                                      
+                            </h:column>
+
+                            <h:column>
+
+                                <h:commandButton styleClass="btn btn-danger btn-xs" value="Visualizar" action="#{carrinhoDeComprasBean.excluir(carrinho)}" ></h:commandButton>
+                            </h:column>
+
+                        </h:dataTable>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </h:body>
-    
+
+
 </ui:decorate>
 
