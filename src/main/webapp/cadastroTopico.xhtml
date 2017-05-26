@@ -6,35 +6,26 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              template="template.xhtml"> 
-
+    
     <div class="container-fluid">
-
         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-            <h2>Formulário de Cadastro</h2>
+            <h2>Novo Tópico</h2>
         </div>
         <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
             <h:form>
-
                 <div class="form-group">
-                    <h:outputLabel for="nome" value="Nome"></h:outputLabel>
+                    <h:outputLabel for="titulo" value="Titúlo"></h:outputLabel>
                     <h:inputText  class="form-control" id="nome"/>
                 </div>
                 <div class="form-group">
-                    <h:outputLabel for="email" value="Email"></h:outputLabel>
-                    <h:inputText  class="form-control" id="email"/>
+                    <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
+                    <h:inputTextarea class="form-control">
+                    </h:inputTextarea>
                 </div>
-                <div class="form-group">
-                    <h:outputLabel for="pws" value="Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="pwd"/>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel for="confpws" value="Confirmar Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="confpwd"/>
-                </div>
-
-                <h:commandButton class="btn btn-primary" value="Enviar"/>    
+                <h:commandButton class="btn btn-primary" value="Criar"/>    
             </h:form>
         </div>
     </div>
+    
 </ui:decorate>
 

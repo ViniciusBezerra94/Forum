@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <ui:decorate xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://java.sun.com/jsf/html"
              xmlns:f="http://java.sun.com/jsf/core"
@@ -8,17 +8,11 @@
              template="template.xhtml"> 
 
     <div class="container-fluid">
-
         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-            <h2>Formulário de Cadastro</h2>
+            <h2>Login</h2>
         </div>
         <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
             <h:form>
-
-                <div class="form-group">
-                    <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-                    <h:inputText  class="form-control" id="nome"/>
-                </div>
                 <div class="form-group">
                     <h:outputLabel for="email" value="Email"></h:outputLabel>
                     <h:inputText  class="form-control" id="email"/>
@@ -27,14 +21,10 @@
                     <h:outputLabel for="pws" value="Password"></h:outputLabel>
                     <h:inputText  class="form-control" id="pwd"/>
                 </div>
-                <div class="form-group">
-                    <h:outputLabel for="confpws" value="Confirmar Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="confpwd"/>
-                </div>
 
-                <h:commandButton class="btn btn-primary" value="Enviar"/>    
+                <h:commandButton class="btn btn-primary" value="Entrar"/>    
             </h:form>
         </div>
     </div>
-</ui:decorate>
 
+</ui:decorate>
