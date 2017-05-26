@@ -6,23 +6,18 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              template="template.xhtml"> 
-    
+
     
     <div class="col-md-2"></div>
     <div class="col-md-8">
     <div class="panel panel-default">
-    <div class="panel-heading">Novo Tópico</div>
+    <div class="panel-heading">Respostas</div>
     <div class="container-fluid">
         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-            <h2>Novo Tópico</h2>
+            <h2>Nova Resposta</h2>
         </div>
         <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
             <h:form>
-                
-                <div class="form-group">
-                    <h:outputLabel for="titulo" value="Título"></h:outputLabel>
-                    <h:inputText  class="form-control" id="titulo"/>
-                </div>
                 
                 <div class="form-group">
                     <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
@@ -31,15 +26,20 @@
                 </div>
                 
                 <div class="form-group">
-                <h:commandButton class="btn btn-primary" value="Criar Tópico"/>  
+                <h:commandButton class="btn btn-primary" value="Responder"/>    
+                </div>
+                
+                <div class="form-group">
+                <h:commandButton class="btn btn-primary" value="Voltar para o Tópico" /> 
                 </div>
                 
             </h:form>
         </div>
     </div>
-    </div>
-    </div>
-    <div class="col-md-2"></div>
+  </div>
+ </div>
+ <div class="col-md-2"></div>
+
     
 </ui:decorate>
 

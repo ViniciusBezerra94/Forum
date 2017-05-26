@@ -7,25 +7,39 @@
              xmlns:p="http://primefaces.org/ui"
              template="template.xhtml"> 
     
+    
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+    <div class="panel panel-default">
+    <div class="panel-heading">Novo Tópico</div>
     <div class="container-fluid">
         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
             <h2>Novo Tópico</h2>
         </div>
         <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
             <h:form>
+                
                 <div class="form-group">
-                    <h:outputLabel for="titulo" value="Titúlo"></h:outputLabel>
-                    <h:inputText  class="form-control" id="nome"/>
+                    <h:outputLabel for="titulo" value="Título"></h:outputLabel>
+                    <h:inputText  class="form-control" id="titulo"/>
                 </div>
+                
                 <div class="form-group">
                     <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
-                    <h:inputTextarea class="form-control">
+                    <h:inputTextarea class="form-control" rows="10" id="mensagem">
                     </h:inputTextarea>
                 </div>
-                <h:commandButton class="btn btn-primary" value="Criar"/>    
+                
+                <div class="form-group">
+                <h:commandButton class="btn btn-primary" value="Criar Tópico"/>  
+                </div>
+                
             </h:form>
         </div>
     </div>
+    </div>
+    </div>
+    <div class="col-md-2"></div>
     
 </ui:decorate>
 
