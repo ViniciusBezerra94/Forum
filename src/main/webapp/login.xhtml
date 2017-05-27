@@ -15,14 +15,14 @@
             <h:form>
                 <div class="form-group">
                     <h:outputLabel for="email" value="Email"></h:outputLabel>
-                    <h:inputText  class="form-control" id="email"/>
+                    <h:inputText  value="#{loginMB.email}" class="form-control" id="email"/>
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="pws" value="Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="pwd"/>
+                    <h:inputText value="#{loginMB.senha}" class="form-control" id="pws"/>
                 </div>
 
-                <h:commandButton class="btn btn-primary" value="Entrar"/>    
+                <h:commandButton action="#{loginMB.logar()}" class="btn btn-primary" value="Entrar"/>    
             </h:form>
         </div>
     </div>

@@ -20,19 +20,21 @@
             <h:form>
                 
                 <div class="form-group">
-                    <h:outputLabel for="titulo" value="Título"></h:outputLabel>
-                    <h:inputText  class="form-control" id="titulo"/>
+                    <h:outputLabel for="titulo" value="titulo" ></h:outputLabel>
+                    <h:inputText  value="#{cadastroTopicoMB.t.titulo}" class="form-control" id="titulo"/>
                 </div>
                 
                 <div class="form-group">
-                    <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
-                    <h:inputTextarea class="form-control" rows="10" id="mensagem">
+                    <h:outputLabel for="mensagem" value="mensagem" ></h:outputLabel>
+                    <h:inputTextarea class="form-control" value="#{cadastroTopicoMB.t.descricao}" rows="10" id="mensagem">
                     </h:inputTextarea>
                 </div>
                 
                 <div class="form-group">
-                <h:commandButton class="btn btn-primary" value="Criar Tópico"/>  
+                    <h:commandButton styleClass="btn btn-primary" action="#{cadastroTopicoMB.salvar()}" value="Criar Tópico" />
                 </div>
+                
+                
                 
             </h:form>
         </div>

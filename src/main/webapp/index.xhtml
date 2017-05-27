@@ -17,28 +17,28 @@
             <div class="">
                 <div id="listaTopicos" class="row">
                     <div  class="table-responsive col-md-12">
-                        <h:dataTable styleClass="table table-striped" value="#{carrinhoDeComprasBean.itens}" var="topicos" >
+                        <h:dataTable styleClass="table table-striped" value="#{indexMB.topicos}" var="topico" >
        
                             <h:column>
                                 <f:facet name="header" >Título</f:facet>
-                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                                <h:outputText  value="#{topico.titulo}"/>
                             </h:column>
                             
                             
                             <h:column>
                                 <f:facet name="header" >Descrição</f:facet>
-                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                                <h:outputText  value="#{topico.descricao}"/>
                             </h:column>
                             
                             <h:column>
                                 <f:facet name="header" >Autor</f:facet>
-                                <h:outputText  value="#{carrinhoDeComprasBean.limitarNome(carrinho.produto.nome)}"/>
+                                <h:outputText  value="#{topico.autor}"/>
                             </h:column>
 
 
                             <h:column>
                                 <f:facet name="header" >Data </f:facet>
-                                <h:outputText  value="#{carrinho.produto.valorUni}"/>
+                                <h:outputText  value="#{topico.data}"/>
                                       
                             </h:column>
 
@@ -51,7 +51,12 @@
 
                     </div>
                 </div>
+
             </div>
+            <div class="col-lg-offset-11">
+                <a class="btn btn-primary" href="cadastroTopico.xhtml">Novo Tópico</a>
+            </div>
+
         </div>
     </h:body>
 

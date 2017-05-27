@@ -17,22 +17,22 @@
 
                 <div class="form-group">
                     <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-                    <h:inputText  class="form-control" id="nome"/>
+                    <h:inputText value="#{formularioMB.u.nome}" class="form-control" id="nome"/>
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="email" value="Email"></h:outputLabel>
-                    <h:inputText  class="form-control" id="email"/>
+                    <h:inputText value="#{formularioMB.u.email}" class="form-control" id="email"/>
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="pws" value="Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="pwd"/>
+                    <h:inputText  value="#{formularioMB.u.senha}" class="form-control" id="pws"/>
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="confpws" value="Confirmar Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="confpwd"/>
+                    <h:inputText  class="form-control" id="confpws"/>
                 </div>
 
-                <h:commandButton class="btn btn-primary" value="Enviar"/>    
+                <h:commandButton  action="#{formularioMB.salvar()}" class="btn btn-primary" value="Enviar"/>    
             </h:form>
         </div>
     </div>
