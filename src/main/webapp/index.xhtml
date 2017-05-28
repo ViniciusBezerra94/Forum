@@ -17,38 +17,39 @@
             <div class="">
                 <div id="listaTopicos" class="row">
                     <div  class="table-responsive col-md-12">
-                        <h:dataTable styleClass="table table-striped" value="#{indexMB.topicos}" var="topico" >
-       
-                            <h:column>
-                                <f:facet name="header" >Título</f:facet>
-                                <h:outputText  value="#{topico.titulo}"/>
-                            </h:column>
-                            
-                            
-                            <h:column>
-                                <f:facet name="header" >Descrição</f:facet>
-                                <h:outputText  value="#{topico.descricao}"/>
-                            </h:column>
-                            
-                            <h:column>
-                                <f:facet name="header" >Autor</f:facet>
-                                <h:outputText  value="#{topico.autor}"/>
-                            </h:column>
+                        <h:form>
+                            <h:dataTable styleClass="table table-striped" value="#{indexMB.topicos}" var="topico" >
+
+                                <h:column>
+                                    <f:facet name="header" >Título</f:facet>
+                                    <h:outputText  value="#{topico.titulo}"/>
+                                </h:column>
 
 
-                            <h:column>
-                                <f:facet name="header" >Data </f:facet>
-                                <h:outputText  value="#{topico.data}"/>
-                                      
-                            </h:column>
+                                <h:column>
+                                    <f:facet name="header" >Descrição</f:facet>
+                                    <h:outputText  value="#{topico.descricao}"/>
+                                </h:column>
 
-                            <h:column>
+                                <h:column>
+                                    <f:facet name="header" >Autor</f:facet>
+                                    <h:outputText  value="#{topico.autor.nome}"/>
+                                </h:column>
 
-                                <h:commandButton styleClass="btn btn-danger btn-xs" value="Visualizar" action="#{carrinhoDeComprasBean.excluir(carrinho)}" ></h:commandButton>
-                            </h:column>
 
-                        </h:dataTable>
+                                <h:column>
+                                    <f:facet name="header" >Data </f:facet>
+                                    <h:outputText  value="#{topico.data}"/>
 
+                                </h:column>
+
+                                <h:column>
+
+                                    <h:commandButton styleClass="btn btn-danger btn-xs" value="Visualizar" action="#{indexMB.visualizar(topico)}" ></h:commandButton>
+                                </h:column>
+
+                            </h:dataTable>
+                        </h:form>
                     </div>
                 </div>
 

@@ -1,11 +1,13 @@
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/Postagem.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/cadastroTopicoMB.java
-/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/dao/TopicoDAO.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/FormularioMB.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/LoginMB.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/MensageriaMB.java
+/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/Mensagem.java
+/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/dao/TopicoDAO.java
+/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/Autor.java
+/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/GerenciadorTopicoMB.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/bean/indexMB.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/User.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/dao/UserDAO.java
-/home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/Mensagem.java
 /home/vinicius/GitHub/Forum/src/main/java/br/com/forum/model/Topico.java

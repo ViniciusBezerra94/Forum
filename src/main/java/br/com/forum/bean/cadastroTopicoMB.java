@@ -6,6 +6,7 @@
 package br.com.forum.bean;
 
 import br.com.forum.dao.TopicoDAO;
+import br.com.forum.model.Autor;
 import br.com.forum.model.Mensagem;
 import br.com.forum.model.Topico;
 import java.io.Serializable;
@@ -39,7 +40,11 @@ public class cadastroTopicoMB implements Serializable {
     }
     
     public void salvar(){
-        t.setAutor("anderson");
+        Autor a = new Autor();
+        a.setNome("anderson");
+        a.setEmail("anderson@gmail.com");
+        t.setAutor(a);
+                
         t.setData(new Date());
         List<Mensagem> mensagens = new ArrayList<>();
         t.setMensagens(mensagens);

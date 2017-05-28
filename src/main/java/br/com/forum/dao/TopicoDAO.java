@@ -159,8 +159,11 @@ public class TopicoDAO {
                     {
                         DBObject dobject = cursor.next();
                         String json = dobject.toString();
+                        String certoId = dobject.get("_id").toString();
                         Gson gson = new Gson();
                         Topico t = gson.fromJson(json, Topico.class);
+                        t.setId(new ObjectId(certoId));
+
                         topicos.add(t);
                     }
                 }

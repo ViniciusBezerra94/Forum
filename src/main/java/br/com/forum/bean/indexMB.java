@@ -11,8 +11,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -48,6 +51,17 @@ public class indexMB implements Serializable{
 
     public void setTopicos(List<Topico> topicos) {
         this.topicos = topicos;
+    }
+    
+    
+    public String visualizar(Topico t){
+            System.out.println("passou por aqui");
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            HttpSession session = request.getSession();
+            session.setAttribute("topico", t);
+            
+            return "respostaTopico.xhtml";
     }
     
     

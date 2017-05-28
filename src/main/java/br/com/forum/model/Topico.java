@@ -17,7 +17,7 @@ public class Topico {
     private ObjectId _id;
     private String titulo;
     private String descricao;
-    private String autor;
+    private Autor autor;
     private Date data;
     private List<Mensagem> mensagens;
 
@@ -58,13 +58,15 @@ public class Topico {
         this.descricao = descricao;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+
 
     public Date getData() {
         return data;

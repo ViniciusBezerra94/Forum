@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Mensagem {
     private String texto;
-    private String autor;
+    private Autor autor;
     private Date data;
 
     public Date getData() {
@@ -34,13 +34,15 @@ public class Mensagem {
         this.texto = texto;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+    
     
     
 }

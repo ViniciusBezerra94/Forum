@@ -206,8 +206,10 @@ public class UserDAO
                     {
                         DBObject dobject = cursor.next();
                         String json = dobject.toString();
+                        String certoId = dobject.get("_id").toString();
                         Gson gson = new Gson();
                         User u = gson.fromJson( json, User.class );
+                        u.setId(new ObjectId(certoId));                      
                         users.add( u );
                     }
                 }
