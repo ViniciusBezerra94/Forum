@@ -9,13 +9,17 @@ import br.com.forum.dao.TopicoDAO;
 import br.com.forum.model.Autor;
 import br.com.forum.model.Mensagem;
 import br.com.forum.model.Topico;
+import br.com.forum.model.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,6 +30,7 @@ import javax.faces.view.ViewScoped;
 public class cadastroTopicoMB implements Serializable {
 
     private Topico t;
+    private User u;
     
     /**
      * Creates a new instance of cadastroTopicoMB
@@ -37,21 +42,35 @@ public class cadastroTopicoMB implements Serializable {
     @PostConstruct
     public void init(){
         t = new Topico();
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        HttpSession session = request.getSession();
+        if(session.getAttribute("user") != null){
+            u = (User) session.getAttribute("user");
+        }
+        
     }
     
     public void salvar(){
-        Autor a = new Autor();
-        a.setNome("anderson");
-        a.setEmail("anderson@gmail.com");
-        t.setAutor(a);
-                
-        t.setData(new Date());
-        List<Mensagem> mensagens = new ArrayList<>();
-        t.setMensagens(mensagens);
-        
-        TopicoDAO tDAO = new TopicoDAO();
-        tDAO.salvar(t);
-        t = new Topico();
+
+        if(u != null){
+            
+            Autor a = new Autor();
+            a.setNome(u.getNome());
+            a.setEmail(u.getEmail());
+            t.setAutor(a);
+
+            t.setData(new Date());
+            List<Mensagem> mensagens = new ArrayList<>();
+            t.setMensagens(mensagens);
+
+            TopicoDAO tDAO = new TopicoDAO();
+            tDAO.salvar(t);
+            t = new Topico();
+        }else{
+            System.out.println("Por favor realize o login para inserir um novo topico");
+        }
+
         
     }
 

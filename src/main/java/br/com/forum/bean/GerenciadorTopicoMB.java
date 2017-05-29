@@ -9,6 +9,7 @@ import br.com.forum.dao.TopicoDAO;
 import br.com.forum.model.Autor;
 import br.com.forum.model.Mensagem;
 import br.com.forum.model.Topico;
+import br.com.forum.model.User;
 import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.PostConstruct;
@@ -29,6 +30,7 @@ public class GerenciadorTopicoMB implements Serializable {
     
     private Topico t;
     private Mensagem m ;
+    private User u;
    
     
     /**
@@ -47,6 +49,9 @@ public class GerenciadorTopicoMB implements Serializable {
         HttpSession session = request.getSession();
         if(session.getAttribute("topico") != null ){
             t = (Topico) session.getAttribute("topico");
+        }
+        if( session.getAttribute("user") != null ){
+            u = (User) session.getAttribute("user");
         }
         
     }
@@ -70,20 +75,25 @@ public class GerenciadorTopicoMB implements Serializable {
     
     
     public void salvarNovaMensagem(){
-        Autor a = new Autor();
-        a.setEmail("anderson@gmail.com");   
-        a.setNome("anderson");
-        m.setAutor(a);
-        m.setData(new Date());
-        System.out.println("" + t.getId());
-        t.getMensagens().add(m);
+        if(u != null){
+            Autor a = new Autor();
+            a.setEmail(u.getEmail());   
+            a.setNome(u.getNome());
+            m.setAutor(a);
+            m.setData(new Date());
+            System.out.println("" + t.getId());
+            t.getMensagens().add(0, m);
+
+            TopicoDAO tDAO = new TopicoDAO();
+            tDAO.update(t, t.getId().toString());
+            System.out.println("salvo com sucesso");
+            m = new Mensagem();
+            
+        }else{
+            System.out.println("Por favor faça o login para inserir uma nova mensagem");
+        }
         
-        
-        TopicoDAO tDAO = new TopicoDAO();
-        tDAO.update(t, t.getId().toString());
-        System.out.println("salvo com sucesso");
-        m = new Mensagem();
-        
+
     }
     
     

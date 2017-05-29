@@ -1,7 +1,9 @@
+br/com/forum/bean/GerenciadorTopicoMB.class
 br/com/forum/dao/TopicoDAO.class
 br/com/forum/bean/indexMB.class
 br/com/forum/bean/LoginMB.class
 br/com/forum/bean/FormularioMB.class
+br/com/forum/model/Autor.class
 br/com/forum/model/Mensagem.class
 br/com/forum/model/Postagem.class
 br/com/forum/bean/cadastroTopicoMB.class

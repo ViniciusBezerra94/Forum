@@ -8,8 +8,11 @@ package br.com.forum.bean;
 import br.com.forum.dao.UserDAO;
 import br.com.forum.model.User;
 import java.io.Serializable;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,8 +33,13 @@ public class LoginMB implements Serializable{
     public String logar(){
         UserDAO uDAO = new UserDAO();
         User u = new User();
-        u = uDAO.buscarPorEmailESenha(email, senha);
-        if(u != null){
+        u = uDAO.buscarPorEmailESenha( email, senha );
+
+        if( u != null ){
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = ( HttpServletRequest ) context.getExternalContext().getRequest();
+            HttpSession session = request.getSession();
+            session.setAttribute( "user", u );
             return "index.xhtml";
         }else{
             return "";
