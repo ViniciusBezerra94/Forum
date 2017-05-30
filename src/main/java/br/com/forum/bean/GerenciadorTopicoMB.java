@@ -13,6 +13,7 @@ import br.com.forum.model.User;
 import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -40,18 +41,19 @@ public class GerenciadorTopicoMB implements Serializable {
     }
     
     @PostConstruct
-    public void init(){
+    public void init()
+    {
         m = new Mensagem();
 
         t = new Topico();
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         HttpSession session = request.getSession();
-        if(session.getAttribute("topico") != null ){
-            t = (Topico) session.getAttribute("topico");
+        if( session.getAttribute( "topico" ) != null ){
+            t = ( Topico ) session.getAttribute( "topico" );
         }
-        if( session.getAttribute("user") != null ){
-            u = (User) session.getAttribute("user");
+        if( session.getAttribute( "user" ) != null ){
+            u = ( User ) session.getAttribute( "user" );
         }
         
     }
@@ -74,23 +76,32 @@ public class GerenciadorTopicoMB implements Serializable {
     
     
     
-    public void salvarNovaMensagem(){
+    public void salvarNovaMensagem()
+    {
         if(u != null){
             Autor a = new Autor();
             a.setEmail(u.getEmail());   
             a.setNome(u.getNome());
             m.setAutor(a);
             m.setData(new Date());
-            System.out.println("" + t.getId());
-            t.getMensagens().add(0, m);
+            
+            t.getMensagens().add( 0, m );
 
             TopicoDAO tDAO = new TopicoDAO();
-            tDAO.update(t, t.getId().toString());
-            System.out.println("salvo com sucesso");
-            m = new Mensagem();
-            
-        }else{
-            System.out.println("Por favor faça o login para inserir uma nova mensagem");
+            if( tDAO.update(t, t.getId().toString()) )
+            {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Mensagem inserida"));
+                m = new Mensagem();
+                
+            }
+            else
+            {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Erro ao inserir mensagem, por favor consulte o administrador do sistema"));
+            }
+        }
+        else
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Por favor, faça login para inserir uma nova mensagem"));
         }
         
 

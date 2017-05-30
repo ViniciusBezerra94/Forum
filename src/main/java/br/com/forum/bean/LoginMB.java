@@ -8,6 +8,7 @@ package br.com.forum.bean;
 import br.com.forum.dao.UserDAO;
 import br.com.forum.model.User;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -40,8 +41,11 @@ public class LoginMB implements Serializable{
             HttpServletRequest request = ( HttpServletRequest ) context.getExternalContext().getRequest();
             HttpSession session = request.getSession();
             session.setAttribute( "user", u );
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Login realizado"));
+            
             return "index.xhtml";
         }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro", "Por favor verifique sua senha e login"));
             return "";
         }
            

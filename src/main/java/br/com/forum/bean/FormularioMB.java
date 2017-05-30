@@ -8,6 +8,8 @@ package br.com.forum.bean;
 import br.com.forum.dao.UserDAO;
 import br.com.forum.model.User;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -19,6 +21,8 @@ import javax.faces.view.ViewScoped;
 @ViewScoped
 public class FormularioMB implements Serializable{
 
+    
+    
     /**
      * Creates a new instance of FormularioMB
      */
@@ -30,8 +34,15 @@ public class FormularioMB implements Serializable{
     
     public void salvar(){
         UserDAO uDAO = new UserDAO();
-        uDAO.salvar(u);
-        u = new User();
+        if( uDAO.salvar( u ) )
+        {
+            FacesContext.getCurrentInstance().addMessage( null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Usuário cadastrado" ));
+            u = new User();
+        }
+        else
+        {
+           FacesContext.getCurrentInstance().addMessage( null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Erro ao cadastrar usuário, por favor consulte o administrador do sistema" )); 
+        }
     }
 
     public User getU() {

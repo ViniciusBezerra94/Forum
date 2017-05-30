@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -51,7 +52,7 @@ public class cadastroTopicoMB implements Serializable {
         
     }
     
-    public void salvar(){
+    public String salvar(){
 
         if(u != null){
             
@@ -65,10 +66,21 @@ public class cadastroTopicoMB implements Serializable {
             t.setMensagens(mensagens);
 
             TopicoDAO tDAO = new TopicoDAO();
-            tDAO.salvar(t);
-            t = new Topico();
-        }else{
-            System.out.println("Por favor realize o login para inserir um novo topico");
+            if(tDAO.salvar(t))
+            {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Tópico Inserido"));
+                t = new Topico();
+                return "index.xhtml";
+            }else
+            {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Não foi possivel inserir o tópico, por favor consulte o administrador do sistema"));
+                return "";
+            }
+        }else
+        {
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro","Por favor faça o login para inserir um tópico"));
+            return "";
         }
 
         
