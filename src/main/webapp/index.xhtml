@@ -18,37 +18,37 @@
                 <div id="listaTopicos" class="row">
                     <div  class="table-responsive col-md-12">
                         <h:form>
-                            <h:dataTable styleClass="table table-striped" value="#{indexMB.topicos}" var="topico" >
+                            <p:dataTable paginator="true" rows="20" styleClass="table table-striped" value="#{indexMB.topicos}" var="topico" >
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >Título</f:facet>
                                     <h:outputText  value="#{topico.titulo}"/>
-                                </h:column>
+                                </p:column>
 
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >Descrição</f:facet>
                                     <h:outputText  value="#{topico.descricao}"/>
-                                </h:column>
+                                </p:column>
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >Autor</f:facet>
                                     <h:outputText  value="#{topico.autor.nome}"/>
-                                </h:column>
+                                </p:column>
 
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >Data </f:facet>
                                     <h:outputText  value="#{topico.data}"/>
+                                    
+                                </p:column>
 
-                                </h:column>
-
-                                <h:column>
+                                <p:column>
 
                                     <h:commandButton styleClass="btn btn-danger btn-xs" value="Visualizar" action="#{indexMB.visualizar(topico)}" ></h:commandButton>
-                                </h:column>
+                                </p:column>
 
-                            </h:dataTable>
+                            </p:dataTable>
                         </h:form>
                     </div>
                 </div>

@@ -36,26 +36,26 @@
                 <div class="">
                     <div id="listaMensagens" class="row">
                         <div  class="table-responsive col-md-12">
-                            <h:dataTable styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
+                            <p:dataTable paginator="true" rows="10" styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >Texto</f:facet>
                                     <h:outputText  value="#{mensagem.texto}"/>
-                                </h:column>
+                                </p:column>
 
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >autor</f:facet>
                                     <h:outputText  value="#{mensagem.autor.nome}"/>
-                                </h:column>
+                                </p:column>
 
-                                <h:column>
+                                <p:column>
                                     <f:facet name="header" >data</f:facet>
                                     <h:outputText  value="#{mensagem.data}"/>
-                                </h:column>
+                                </p:column>
 
 
-                            </h:dataTable>
+                            </p:dataTable>
 
                         </div>
                     </div>
