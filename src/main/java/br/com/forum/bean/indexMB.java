@@ -7,6 +7,7 @@ package br.com.forum.bean;
 
 import br.com.forum.dao.TopicoDAO;
 import br.com.forum.model.Topico;
+import br.com.forum.model.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class indexMB implements Serializable{
     /**
      * Creates a new instance of indexMB
      */
-    
+    private User u ;
     private List<Topico> topicos = new ArrayList<>(); 
     
     public indexMB() {
@@ -37,7 +38,14 @@ public class indexMB implements Serializable{
     @PostConstruct
     public void init(){
         try{
-        
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            HttpSession session = request.getSession();
+            u = (User) session.getAttribute("user");
+            
+            
+            
+            
         TopicoDAO tDAO = new TopicoDAO();
         topicos = tDAO.listar();
         }catch(Exception e) {
@@ -64,6 +72,32 @@ public class indexMB implements Serializable{
             return "respostaTopico.xhtml";
     }
     
+    public boolean isLogou(){
+        return u != null && u.getId() != null;
+    }
+    
+    
+    public String logout() {
+        u = null;
+        
+        
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+
+        return "index";
+    }
+    
+    
+    public String getNomeUsuarioLogado(){
+        if(u.getNome().length() > 20){
+            return u.getNome().substring(0, 20) + "...";
+        }
+        return u.getNome();
+        
+    }
     
     
 }
