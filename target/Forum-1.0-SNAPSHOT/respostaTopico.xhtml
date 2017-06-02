@@ -36,27 +36,35 @@
                 <div class="">
                     <div id="listaMensagens" class="row">
                         <div  class="table-responsive col-md-12">
-                            <p:dataTable paginator="true" rows="10" styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
+                            <h:form>
+                                <p:dataTable paginator="true" rows="10" styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
 
-                                <p:column>
-                                    <f:facet name="header" >Texto</f:facet>
-                                    <h:outputText  value="#{mensagem.texto}"/>
-                                </p:column>
-
-
-                                <p:column>
-                                    <f:facet name="header" >autor</f:facet>
-                                    <h:outputText  value="#{mensagem.autor.nome}"/>
-                                </p:column>
-
-                                <p:column>
-                                    <f:facet name="header" >data</f:facet>
-                                    <h:outputText  value="#{mensagem.data}"/>
-                                </p:column>
+                                    <p:column>
+                                        <f:facet name="header" >Texto</f:facet>
+                                        <h:outputText  value="#{mensagem.texto}"/>
+                                    </p:column>
 
 
-                            </p:dataTable>
+                                    <p:column>
+                                        <f:facet name="header" >autor</f:facet>
+                                        <h:outputText  value="#{mensagem.autor.nome}"/>
+                                    </p:column>
 
+                                    <p:column>
+                                        <f:facet name="header" >data</f:facet>
+                                        <h:outputText  value="#{mensagem.data}"/>
+                                    </p:column>
+
+                                        <p:column>
+
+                                            <h:commandButton  rendered="#{gerenciadorTopicoMB.isRemove(mensagem)}"  styleClass="btn btn-danger btn-xs" value="Excluir" action="#{gerenciadorTopicoMB.remover(mensagem)}" ></h:commandButton>
+                                        </p:column>                                
+
+
+
+
+                                </p:dataTable>
+                            </h:form>
                         </div>
                     </div>
 

@@ -108,6 +108,46 @@ public class GerenciadorTopicoMB implements Serializable {
     }
     
     
+        public boolean isRemove(Mensagem m)
+        {
+        if( u != null )
+        {
+            if( u.getEmail().equalsIgnoreCase( m.getAutor().getEmail() ) ){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        }
+        
+        public void remover( Mensagem m ){
+            try
+            {
+                Topico aux = t;
+                aux.getMensagens().remove(m);
+                TopicoDAO tDAO = new TopicoDAO();
+                if( tDAO.update( aux, aux.getId().toString() ) ){
+                    t.getMensagens().remove(m);
+                    FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( FacesMessage.SEVERITY_INFO,"Sucesso","Mensagem removida" ) );
+                }
+                else
+                {
+                    FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( FacesMessage.SEVERITY_ERROR,"Erro","Não foi possivel remover a mensagem, por favor consulte o administrador do sistema" ) );
+                }
+            }catch(Exception e)
+            {
+                    FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( FacesMessage.SEVERITY_ERROR,"Erro", e.getMessage() ) );
+            }
+
+        }
+        
     
     
     
