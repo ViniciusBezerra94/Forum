@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -96,6 +97,43 @@ public class indexMB implements Serializable{
             return u.getNome().substring(0, 20) + "...";
         }
         return u.getNome();
+        
+    }
+    
+    public boolean isRemove(Topico t){
+        if( u != null )
+        {
+            if( u.getEmail().equalsIgnoreCase(t.getAutor().getEmail()) ){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public void remover(Topico t){
+        try
+        {
+            TopicoDAO tDAO = new TopicoDAO();
+            if( tDAO.remove( t.getId().toString() ) )
+            {
+                topicos.remove(t);
+                FacesContext.getCurrentInstance().addMessage( null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Tópico removido" ) );
+            }
+            else
+            {
+                FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( FacesMessage.SEVERITY_ERROR,"Erro","Não foi possivel remover o tópico, por favor consulte o administrador do sistema" ) );
+            }
+        }catch(Exception e)
+        {
+                FacesContext.getCurrentInstance().addMessage( null, new FacesMessage( FacesMessage.SEVERITY_ERROR,"Erro", e.getMessage() ) );
+        }
         
     }
     

@@ -45,7 +45,11 @@
 
                                 <p:column>
 
-                                    <h:commandButton styleClass="btn btn-danger btn-xs" value="Visualizar" action="#{indexMB.visualizar(topico)}" ></h:commandButton>
+                                    <h:commandButton styleClass="btn btn-primary btn-xs" value="Visualizar" action="#{indexMB.visualizar(topico)}" ></h:commandButton>
+                                </p:column>
+                                <p:column>
+
+                                    <h:commandButton  rendered="#{indexMB.isRemove(topico)}"  styleClass="btn btn-danger btn-xs" value="Excluir" action="#{indexMB.remover(topico)}" ></h:commandButton>
                                 </p:column>
 
                             </p:dataTable>
