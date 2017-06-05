@@ -23,10 +23,10 @@
                         <br/>
                     </div>
                     <div class="col-md-5">
-                        
+
                         <h:outputText value="#{gerenciadorTopicoMB.t.descricao}" ></h:outputText>
                         <br/>
-                        <h:outputText value="#{gerenciadorTopicoMB.t.data}" ></h:outputText>
+                        <h:outputText value="#{gerenciadorTopicoMB.formatarData(gerenciadorTopicoMB.t.data)}" ></h:outputText>
                         <br/>
                         <br/>
                     </div>
@@ -36,29 +36,36 @@
                 <div class="">
                     <div id="listaMensagens" class="row">
                         <div  class="table-responsive col-md-12">
-                            <h:form>
-                                <p:dataTable paginator="true" rows="10" styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
+                            <h:form id="form99">
+                                <p:dataTable id="tabela-mensagem" paginator="true" rows="10" styleClass="table table-striped" value="#{gerenciadorTopicoMB.t.mensagens}" var="mensagem" >
 
-                                    <p:column>
+                                    <p:column style="width: 68%">
                                         <f:facet name="header" >Texto</f:facet>
-                                        <h:outputText  value="#{mensagem.texto}"/>
+                                        <h:outputText escape="false"  value="#{gerenciadorTopicoMB.formatarQuebraLinha(mensagem.texto)}"/>
                                     </p:column>
 
 
-                                    <p:column>
+                                    <p:column style="width: 12%; text-align: center;">
                                         <f:facet name="header" >autor</f:facet>
                                         <h:outputText  value="#{mensagem.autor.nome}"/>
                                     </p:column>
 
-                                    <p:column>
+                                    <p:column style="width: 10%">
                                         <f:facet name="header" >data</f:facet>
-                                        <h:outputText  value="#{mensagem.data}"/>
+                                        <h:outputText  value="#{gerenciadorTopicoMB.formatarData(mensagem.data)}"/>
                                     </p:column>
 
-                                        <p:column>
+                                    <p:column style="width: 10%">
 
-                                            <h:commandButton  rendered="#{gerenciadorTopicoMB.isRemove(mensagem)}"  styleClass="btn btn-danger btn-xs" value="Excluir" action="#{gerenciadorTopicoMB.remover(mensagem)}" ></h:commandButton>
-                                        </p:column>                                
+                                        <p:commandButton  styleClass="btn-danger" rendered="#{gerenciadorTopicoMB.isRemove(mensagem)}" action="#{gerenciadorTopicoMB.remover(mensagem)}" update="tabela-mensagem" value="Excluir" >
+                                            <p:confirm header="Confirmação" message="Você realmente deseja excluir a mensagem?"  />
+                                        </p:commandButton>
+
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Sim" type="button"  styleClass="ui-confirmdialog-yes" />
+                                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" />
+                                        </p:confirmDialog>
+                                    </p:column>                                
 
 
 
@@ -75,14 +82,16 @@
 
                         <div class="form-group">
                             <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
-                            <h:inputTextarea value="#{gerenciadorTopicoMB.m.texto}" class="form-control" rows="10" id="mensagem">
+                            <h:inputTextarea  value="#{gerenciadorTopicoMB.m.texto}" class="form-control" rows="10" id="mensagem">
                             </h:inputTextarea>
                         </div>
 
                         <div class="form-group">
-                            <h:commandButton action="#{gerenciadorTopicoMB.salvarNovaMensagem()}" class="btn btn-primary" value="Responder"/>    
-                            <a href="index.xhtml" class="btn btn-primary"> Voltar para Tópico </a>
-                        
+                            <h:commandButton action="#{gerenciadorTopicoMB.salvarNovaMensagem()}" class="btn btn-primary"  value="Responder">
+                                <f:ajax execute="@form" render="@form :mensagem form99 :tabela-mensagem"  />
+                            </h:commandButton>
+                            <a href="index.xhtml" class="btn btn-primary"> Voltar para o Forum </a>
+
                         </div>
 
 

@@ -9,7 +9,9 @@ import br.com.forum.dao.TopicoDAO;
 import br.com.forum.model.Topico;
 import br.com.forum.model.User;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -136,6 +138,13 @@ public class indexMB implements Serializable{
         }
         
     }
+    
+    
+    public String formatarData(Date data){
+       String dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(data);
+       return dataFormatada;
+    }
+    
     
     
 }

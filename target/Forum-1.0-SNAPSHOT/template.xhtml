@@ -22,13 +22,14 @@
         <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.validate.js"></script>
         <script type="text/javascript" src="#{request.contextPath}/resources/js/bootbox.min.js"></script>
         <script type="text/javascript" src="#{request.contextPath}/resources/js/jquery.funcao.js"></script> 
+        <script type="text/javascript" src="#{request.contextPath}/resources/js/validacao.js"></script> 
 
     </h:head>
 
 
     <h:body>
         
-        <p:growl id="growl" life="5000" showDetail="true"  />  
+        <p:growl id="growl" autoUpdate="true" life="5000" showDetail="true"  />  
         
         
         <p:outputPanel rendered="#{!indexMB.logou}">

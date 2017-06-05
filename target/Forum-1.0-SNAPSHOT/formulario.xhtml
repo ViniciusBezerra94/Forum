@@ -5,7 +5,9 @@
              xmlns:f="http://java.sun.com/jsf/core"
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
+             xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
              template="template.xhtml"> 
+
 
     <div class="container-fluid">
 
@@ -13,27 +15,29 @@
             <h2>Formulário de Cadastro</h2>
         </div>
         <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
-            <h:form>
+            <h:form id="formCadastro" >
 
                 <div class="form-group">
                     <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-                    <h:inputText value="#{formularioMB.u.nome}" class="form-control" id="nome"/>
+                    <h:inputText   value="#{formularioMB.u.nome}" styleClass="form-control" id="nome" pt:placeholder="Nome Completo"/>
+                    
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="email" value="Email"></h:outputLabel>
-                    <h:inputText value="#{formularioMB.u.email}" class="form-control" id="email"/>
+                    <h:inputText value="#{formularioMB.u.email}"  class="form-control" id="email" pt:placeholder="exemplo@exemplo.com"/>
                 </div>
                 <div class="form-group">
-                    <h:outputLabel for="pws" value="Password"></h:outputLabel>
-                    <h:inputText  value="#{formularioMB.u.senha}" class="form-control" id="pws"/>
+                    <h:outputLabel for="pws" value="Senha"></h:outputLabel>
+                    <h:inputSecret value="#{formularioMB.u.senha}" class="form-control"  id="pws"/>
                 </div>
                 <div class="form-group">
-                    <h:outputLabel for="confpws" value="Confirmar Password"></h:outputLabel>
-                    <h:inputText  class="form-control" id="confpws"/>
+                    <h:outputLabel for="confpws" value="Confirmar Senha"></h:outputLabel>
+                    <h:inputSecret value="#{formularioMB.confSenha}" class="form-control" id="confpws"/>
                 </div>
 
                 <h:commandButton  action="#{formularioMB.salvar()}" class="btn btn-primary" value="Enviar"/>    
             </h:form>
+            
         </div>
     </div>
 </ui:decorate>

@@ -37,6 +37,8 @@ public class LoginMB implements Serializable{
         u = uDAO.buscarPorEmailESenha( email, senha );
 
         if( u != null ){
+            email = "";
+            senha = "";
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = ( HttpServletRequest ) context.getExternalContext().getRequest();
             HttpSession session = request.getSession();

@@ -11,6 +11,7 @@ import br.com.forum.model.Mensagem;
 import br.com.forum.model.Topico;
 import br.com.forum.model.User;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -90,8 +91,9 @@ public class GerenciadorTopicoMB implements Serializable {
             TopicoDAO tDAO = new TopicoDAO();
             if( tDAO.update(t, t.getId().toString()) )
             {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Mensagem inserida"));
                 m = new Mensagem();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Mensagem inserida"));
+                
                 
             }
             else
@@ -147,6 +149,18 @@ public class GerenciadorTopicoMB implements Serializable {
             }
 
         }
+        
+        
+    public String formatarData(Date data){
+       String dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(data);
+       return dataFormatada;
+    }
+    
+    public String formatarQuebraLinha(String texto){
+        String novo = texto.replaceAll("\n", "<br>");
+        return novo;
+    }
+    
         
     
     

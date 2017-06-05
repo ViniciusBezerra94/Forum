@@ -21,13 +21,14 @@ import javax.faces.view.ViewScoped;
 @ViewScoped
 public class FormularioMB implements Serializable{
 
-    
+    String confSenha;
     
     /**
      * Creates a new instance of FormularioMB
      */
     public FormularioMB() {
         u = new User();
+        confSenha = "";
     }
     
     private User u ;
@@ -38,6 +39,7 @@ public class FormularioMB implements Serializable{
         {
             FacesContext.getCurrentInstance().addMessage( null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Usuário cadastrado" ));
             u = new User();
+            confSenha = "";
         }
         else
         {
@@ -52,6 +54,16 @@ public class FormularioMB implements Serializable{
     public void setU(User u) {
         this.u = u;
     }
+
+    public String getConfSenha() {
+        return confSenha;
+    }
+
+    public void setConfSenha(String confSenha) {
+        this.confSenha = confSenha;
+    }
+    
+    
     
     
     
