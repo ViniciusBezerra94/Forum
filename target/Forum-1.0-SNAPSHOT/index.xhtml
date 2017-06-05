@@ -12,7 +12,7 @@
 
         <div class="container">
             <div class="panel panel-default">
-                <div class="panel-heading">Tópicos</div>
+                <div class="panel-heading"><h2>Tópicos</h2></div>
                 <div class="panel-body">
 
 
@@ -32,7 +32,7 @@
 
                                         <p:column  >
                                             <f:facet name="header" >Descrição</f:facet>
-                                            <h:outputText  value="#{topico.descricao}"/>
+                                            <h:outputText escape="false"  value="#{indexMB.formatarQuebraLinha(topico.descricao)}"/>
                                         </p:column>
 
                                         <p:column style="width: 10%; text-align: center;">

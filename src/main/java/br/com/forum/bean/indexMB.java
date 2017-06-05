@@ -145,6 +145,17 @@ public class indexMB implements Serializable{
        return dataFormatada;
     }
     
+        public String formatarQuebraLinha(String texto){
+        String novo = texto.replaceAll("\n", "<br>");
+        if(texto.length() <= 150){
+            return novo;
+        }else{
+            return novo.substring(0,150) + "...";
+        }
+        
+    }
+    
+    
     
     
 }

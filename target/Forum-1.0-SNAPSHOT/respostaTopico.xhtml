@@ -17,16 +17,32 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-5">
-                        <h:outputText value="#{gerenciadorTopicoMB.t.autor.nome}" ></h:outputText>
+                        <p>
+                            <h:outputLabel value="Titulo: "></h:outputLabel>
+                            <br/>
+                            <h:outputText value="#{gerenciadorTopicoMB.t.titulo}" ></h:outputText>                       
+                        </p>
+                        <p>
+                            <h:outputLabel value="Descrição: "></h:outputLabel>
+                            <br/>
+                            <h:outputText value="#{gerenciadorTopicoMB.t.descricao}" ></h:outputText>                       
+                        </p>
+
                         <br/>
-                        <h:outputText value="#{gerenciadorTopicoMB.t.titulo}" ></h:outputText>
+
                         <br/>
                     </div>
                     <div class="col-md-5">
-
-                        <h:outputText value="#{gerenciadorTopicoMB.t.descricao}" ></h:outputText>
-                        <br/>
-                        <h:outputText value="#{gerenciadorTopicoMB.formatarData(gerenciadorTopicoMB.t.data)}" ></h:outputText>
+                        <p>
+                            <h:outputLabel value="Autor: "></h:outputLabel>
+                            <br/>
+                            <h:outputText value="#{gerenciadorTopicoMB.t.autor.nome}" ></h:outputText>                       
+                        </p>
+                        <p>
+                            <h:outputLabel value="Descrição: "></h:outputLabel>
+                            <br/>
+                            <h:outputText value="#{gerenciadorTopicoMB.formatarData(gerenciadorTopicoMB.t.data)}" ></h:outputText>                       
+                        </p>
                         <br/>
                         <br/>
                     </div>
