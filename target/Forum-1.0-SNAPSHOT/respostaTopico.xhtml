@@ -39,7 +39,7 @@
                             <h:outputText value="#{gerenciadorTopicoMB.t.autor.nome}" ></h:outputText>                       
                         </p>
                         <p>
-                            <h:outputLabel value="Descrição: "></h:outputLabel>
+                            <h:outputLabel value="Data: "></h:outputLabel>
                             <br/>
                             <h:outputText value="#{gerenciadorTopicoMB.formatarData(gerenciadorTopicoMB.t.data)}" ></h:outputText>                       
                         </p>
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
-                    <h:form>
+                    <h:form id="formMensagem">
 
                         <div class="form-group">
                             <h:outputLabel for="mensagem" value="Mensagem"></h:outputLabel>
@@ -104,7 +104,7 @@
 
                         <div class="form-group">
                             <h:commandButton action="#{gerenciadorTopicoMB.salvarNovaMensagem()}" class="btn btn-primary"  value="Responder">
-                                <f:ajax execute="@form" render="@form :mensagem form99 :tabela-mensagem"  />
+                                <f:ajax execute="formMensagem" render=":formMensagem:mensagem form99:tabela-mensagem"  />
                             </h:commandButton>
                             <a href="index.xhtml" class="btn btn-primary"> Voltar para o Forum </a>
 
